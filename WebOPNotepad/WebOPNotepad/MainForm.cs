@@ -12,6 +12,9 @@ namespace WebOPNotepad
     {
         Button saveBtn;
         Button loadBtn;
+        Button color;
+        Button colorOk;
+        TextBox colorPicker;
         TextBox saveFile;
         TextBox loadFile;
         TextArea editArea;
@@ -52,6 +55,28 @@ namespace WebOPNotepad
             {
                 Text = "Enter an existing file.",
             };
+            colorPicker = new TextBox()
+            {
+                Text = "Enter an RGB value",
+            };
+            colorOk = new Button()
+            {
+                Text = "OK",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12,
+                },
+                Command = new DelegateCommand(() => OnColorOk())
+            };
+            color = new Button()
+            {
+                Text = "Color",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12,
+                },
+                Command = new DelegateCommand(() => OnColor()),
+            };
             Controls = new Layout()
             {
                 new TextBlock()
@@ -64,20 +89,12 @@ namespace WebOPNotepad
                         FontWeight = FontWeight.Bold,
                     }
                 },
-                new HtmlControl()
-                {
-                    Elements = new ElementGroup() {
-                        new AnchorElement() {
-                            HREF = "https://github.com/WhatCubes/WebOPNotepad",
-                            TextContent = "Source Code"
-                        }
-                    }
-                },
                 editArea,
                 saveBtn,
                 saveFile,
                 loadBtn,
                 loadFile,
+                color,
                 new TextBlock()
                 {
                     Text = "(c) 2016 The WhatCubes Team",
@@ -119,6 +136,16 @@ namespace WebOPNotepad
         {
             //Load event
             editArea.Text = _localStorage.GetItem(loadFile.Text) ?? "";
+        }
+        private void OnColorOk() {
+            //color.InternalJQElement.Css(color="blue");
+        }
+        private void OnColor()
+        {
+            //Color click event
+            editArea.Text = "You have clicked the color button";
+            colorPicker.InternalJQElement.FadeIn();
+            colorOk.InternalJQElement.FadeIn();
         }
     }
 }
