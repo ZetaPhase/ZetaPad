@@ -1,0 +1,23 @@
+// JSILc v0.8.34556
+// Build took 0026.21 second(s).
+// The following configuration was used when translating 'C:\Users\daveho8888\Documents\dave ho\programming\WebOPNotepad\WebOPNotepad\WebOPNotepad\bin\Debug\WebOPNotepad.exe':
+{"ContributingPaths":["C:\\Users\\daveho8888\\Documents\\dave ho\\programming\\WebOPNotepad\\WebOPNotepad\\packages\\ExaPhaser.WebForms.1.1.4\\jsil\\defaults.jsilconfig"],"Path":"C:\\Users\\daveho8888\\Documents\\dave ho\\programming\\WebOPNotepad\\WebOPNotepad\\packages\\ExaPhaser.WebForms.1.1.4\\jsil","SolutionBuilder":{"Configuration":null,"Platform":null,"Target":null,"LogVerbosity":null,"ExtraOutputs":[]},"Quiet":null,"AutoLoadConfigFiles":null,"UseLocalProxies":null,"ReuseTypeInfoAcrossAssemblies":null,"ProxyWarnings":false,"OutputDirectory":"C:\\Users\\daveho8888\\Documents\\dave ho\\programming\\WebOPNotepad\\WebOPNotepad\\WebOPNotepad\\bin\\Debug\\html","OutputFileName":null,"FileOutputDirectory":null,"Profile":"Default","ProfileSettings":{"OverwriteExistingContent":true,"ContentOutputDirectory":"%outputdirectory%/Content"},"AnalyzerSettings":{},"CustomVariables":{},"ApplyDefaults":null,"IncludeDependencies":null,"UseSymbols":null,"UseThreads":null,"UseDefaultProxies":null,"GenerateSkeletonsForStubbedAssemblies":null,"GenerateContentManifest":null,"RunBugChecks":null,"TuneGarbageCollection":null,"FilenameEscapeRegex":null,"AssemblyCollectionName":null,"EmitterFactoryName":null,"BuildSourceMap":null,"FrameworkVersion":null,"Assemblies":{"TranslateAdditional":[],"Ignored":["Microsoft\\.VisualC,","Accessibility,","SMDiagnostics,","System\\.EnterpriseServices,","System\\.Security,","System\\.Runtime\\.Serialization\\.Formatters\\.Soap,","System\\.Runtime\\.DurableInstancing,","System\\.Data\\.SqlXml,","JSIL\\.Meta,"],"Stubbed":["^mscorlib,","^System,","^System\\.(.+),","^Microsoft\\.(.+),","FSharp.Core,"],"Proxies":[],"Redirects":{}},"CodeGenerator":{"EliminateStructCopies":null,"SimplifyOperators":null,"SimplifyLoops":null,"EliminateTemporaries":null,"EliminateRedundantControlFlow":null,"CacheMethodSignatures":null,"CacheGenericMethodSignatures":null,"CacheTypeExpressions":null,"CacheBaseMethodHandles":null,"EliminatePointlessFinallyBlocks":null,"PreferAccessorMethods":null,"HintIntegerArithmetic":null,"EnableThreadedTransforms":null,"FreezeImmutableObjects":null,"EnableUnsafeCode":null,"HoistAllocations":null,"HintDoubleArithmetic":null,"AutoGenerateEventAccessorsInSkeletons":null,"AggressivelyUseElementProxies":null,"EmitAllParameterNames":null,"StripUnusedLoopNames":null,"IntroduceCharCasts":null,"IntroduceEnumCasts":null,"EmulateInt64":null,"DecomposeAllMutationOperators":null}}
+// The configuration was generated from the following configuration files:
+C:\Users\daveho8888\Documents\dave ho\programming\WebOPNotepad\WebOPNotepad\packages\ExaPhaser.WebForms.1.1.4\jsil\defaults.jsilconfig
+// The following outputs were produced:
+WebOPNotepad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
+mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+ExaPhaser.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
+ExaPhaser.SharpJS.System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
+SharpJS.Dom, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
+ExaPhaser.SharpJS.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
+System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
+System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+System.Dynamic, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
+System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
+// The following method(s) were ignored due to untranslatable variables:
+// Miscellaneous log output follows:
+
