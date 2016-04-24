@@ -1,3 +1,4 @@
+![Logo](webopnotepad.png)
 
 Web version notepad of OPNotepad4 using different framework
 
