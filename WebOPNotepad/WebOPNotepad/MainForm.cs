@@ -1,22 +1,40 @@
 ﻿using ExaPhaser.WebForms;
 using ExaPhaser.WebForms.Controls;
 using SharpJS.Dom;
+using SharpJS.Dom.Elements;
 using SharpJS.Dom.Styles;
+using System.IO.WebStorage;
 
 namespace WebOPNotepad
 {
-    /// <summary>
-	/// Main WebForm
-	/// </summary>
 	public class MainForm : WebForm
     {
+        Button saveBtn;
+        Button openBtn;
+        TextArea editArea;
+        LocalStorageHandle _localStorage;
+
         public MainForm()
         {
+            _localStorage = new LocalStorageHandle();
+            saveBtn = new Button()
+            {
+                Text = "Save",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12,
+                },
+                Command = new DelegateCommand(() => OnSave()),
+            };
+            editArea = new TextArea()
+            {
+                Text = "Cool text area thing",
+            };
             Controls = new Layout()
             {
                 new TextBlock()
                 {
-                    Text = "ExaPhaser.WebForms Demo",
+                    Text = "WebOPNotepad",
                     TextAlign = TextAlign.Center,
                     FontStyle = new FontStyle()
                     {
@@ -24,26 +42,46 @@ namespace WebOPNotepad
                         FontWeight = FontWeight.Bold,
                     }
                 },
+
+                editArea,
+                saveBtn,
+                openBtn,
                 new TextBlock()
                 {
-                    Text = "A random TextBox is below",
+                    Text = "(c) 2016 The WhatCubes Team",
+                    TextAlign = TextAlign.Center
                 },
-                new TextBox()
+                #region random htmlcontrol
+                new HtmlControl()
                 {
-                    Text = "Some text",
+                    Elements = new ElementGroup()
+                    {
+                        new AnchorElement()
+                        {
+                            HREF = "http://example.com",
+                            TextContent = "This is this random link",
+                        },
+                        new ParagraphElement()
+                        {
+                            Style = "text-align: center;",
+                            TextContent = "Here's this random paragraph like what",
+                        },
+                        new Element("video")
+                        {
+
+                        }
+                    }
                 },
-                new Button()
-                {
-                    Text = "OK",
-                    CommandParameter = null,
-                    Command = new DelegateCommand(()=>JSLibrary.Alert("You clicked the button")),
-                },
-                new TextArea()
-                {
-                    Text = "Cool! TextArea is now supported!",
-                    Rows = 20,
-                },
+                #endregion
             };
+            editArea.Text = _localStorage.GetItem("file.txt") ?? "";
         }
+
+        private void OnSave()
+        {
+            //Save event
+            _localStorage.SetItem("file.txt", editArea.Text);
+        }
+        //private void OnLoad()
     }
 }
