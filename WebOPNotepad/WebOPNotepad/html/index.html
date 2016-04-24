@@ -2,9 +2,11 @@
 <html>
 
 <head>
+    <title>WebFormsApplication</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="index.css"></link>
-    <link rel="stylesheet" href="browser.css"></link>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="browser.css" />
+    <link rel="icon" href="sharpjs.ico">
     <script src="jquery.min.js"></script>
 </head>
 
@@ -28,6 +30,9 @@
     <div class="grid">
         <div class="centered grid__col--12">
             <div id="webform-container"></div>
+            <div class="wrap">
+                Created with <a href="https://exaphaser.github.io/SharpJS">SharpJS</a>
+            </div>
         </div>
     </div>
 
@@ -37,11 +42,10 @@
     <script type="text/javascript">
         function runMain() {
             $("#canvas").remove(); //remove the canvas
-            $('head').append('<link rel="stylesheet" href="polyui.css"></link>');
+            $('head').append('<link rel="stylesheet" href="kubism.min.css"></link>');
             var asm = JSIL.GetAssembly("WebOPNotepad");
             JSIL.InvokeEntryPoint(asm, []);
         };
     </script>
 </body>
-
 </html>
