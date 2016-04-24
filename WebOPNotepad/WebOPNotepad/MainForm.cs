@@ -10,13 +10,19 @@ namespace WebOPNotepad
 	public class MainForm : WebForm
     {
         Button saveBtn;
-        Button openBtn;
+        Button loadBtn;
+        TextArea saveFile;
+        TextArea loadFile;
         TextArea editArea;
         LocalStorageHandle _localStorage;
 
         public MainForm()
         {
             _localStorage = new LocalStorageHandle();
+            editArea = new TextArea()
+            {
+                Text = "",
+            };
             saveBtn = new Button()
             {
                 Text = "Save",
@@ -26,9 +32,22 @@ namespace WebOPNotepad
                 },
                 Command = new DelegateCommand(() => OnSave()),
             };
-            editArea = new TextArea()
+            loadBtn = new Button()
             {
-                Text = "Cool text area thing",
+                Text = "Load",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12,
+                },
+                Command = new DelegateCommand(() => OnLoad()),
+            };
+            saveFile = new TextArea()
+            {
+                Text = "Enter a name.",
+            };
+            loadFile = new TextArea()
+            {
+                Text = "Enter an existing file.",
             };
             Controls = new Layout()
             {
@@ -45,7 +64,9 @@ namespace WebOPNotepad
 
                 editArea,
                 saveBtn,
-                openBtn,
+                saveFile,
+                loadBtn,
+                loadFile,
                 new TextBlock()
                 {
                     Text = "(c) 2016 The WhatCubes Team",
@@ -82,6 +103,10 @@ namespace WebOPNotepad
             //Save event
             _localStorage.SetItem("file.txt", editArea.Text);
         }
-        //private void OnLoad()
+        private void OnLoad()
+        {
+            //Load event
+            editArea.Text = _localStorage.GetItem(loadFile.Text) ?? "";
+        }
     }
 }
