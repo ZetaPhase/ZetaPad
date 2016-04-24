@@ -23,6 +23,7 @@ namespace WebOPNotepad
             editArea = new TextArea()
             {
                 Text = "",
+                Rows = 12,
             };
             saveBtn = new Button()
             {
