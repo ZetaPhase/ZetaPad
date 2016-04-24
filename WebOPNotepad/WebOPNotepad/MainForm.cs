@@ -4,6 +4,7 @@ using SharpJS.Dom;
 using SharpJS.Dom.Elements;
 using SharpJS.Dom.Styles;
 using System.IO.WebStorage;
+using System;
 
 namespace WebOPNotepad
 {
@@ -11,8 +12,8 @@ namespace WebOPNotepad
     {
         Button saveBtn;
         Button loadBtn;
-        TextArea saveFile;
-        TextArea loadFile;
+        TextBox saveFile;
+        TextBox loadFile;
         TextArea editArea;
         LocalStorageHandle _localStorage;
 
@@ -41,11 +42,11 @@ namespace WebOPNotepad
                 },
                 Command = new DelegateCommand(() => OnLoad()),
             };
-            saveFile = new TextArea()
+            saveFile = new TextBox()
             {
                 Text = "Enter a name.",
             };
-            loadFile = new TextArea()
+            loadFile = new TextBox()
             {
                 Text = "Enter an existing file.",
             };
@@ -95,13 +96,14 @@ namespace WebOPNotepad
                 },
                 #endregion
             };
-            editArea.Text = _localStorage.GetItem("file.txt") ?? "";
+            editArea.Text = _localStorage.GetItem("save_state.txt") ?? "";
         }
 
         private void OnSave()
         {
             //Save event
-            _localStorage.SetItem("file.txt", editArea.Text);
+            _localStorage.SetItem(saveFile.Text, editArea.Text);
+            _localStorage.SetItem("save_state.txt", editArea.Text);
         }
         private void OnLoad()
         {
