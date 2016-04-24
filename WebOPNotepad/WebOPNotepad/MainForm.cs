@@ -76,23 +76,23 @@ namespace WebOPNotepad
                 #region random htmlcontrol
                 new HtmlControl()
                 {
-                    Elements = new ElementGroup()
-                    {
-                        new AnchorElement()
-                        {
-                            HREF = "http://example.com",
-                            TextContent = "This is this random link",
-                        },
-                        new ParagraphElement()
-                        {
-                            Style = "text-align: center;",
-                            TextContent = "Here's this random paragraph like what",
-                        },
-                        new Element("video")
-                        {
+                    //Elements = new ElementGroup()
+                    //{
+                    //    new AnchorElement()
+                    //    {
+                    //        HREF = "http://example.com",
+                    //        TextContent = "This is this random link",
+                    //    },
+                    //    new ParagraphElement()
+                    //    {
+                    //        Style = "text-align: center;",
+                    //        TextContent = "Here's this random paragraph like what",
+                    //    },
+                    //    new Element("video")
+                    //    {
 
-                        }
-                    }
+                    //    }
+                    //}
                 },
                 #endregion
             };
