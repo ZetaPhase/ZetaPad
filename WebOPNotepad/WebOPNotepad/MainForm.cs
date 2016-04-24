@@ -16,6 +16,7 @@ namespace WebOPNotepad
         TextBox loadFile;
         TextArea editArea;
         LocalStorageHandle _localStorage;
+        
 
         public MainForm()
         {
@@ -63,7 +64,15 @@ namespace WebOPNotepad
                         FontWeight = FontWeight.Bold,
                     }
                 },
-
+                new HtmlControl()
+                {
+                    Elements = new ElementGroup() {
+                        new AnchorElement() {
+                            HREF = "https://github.com/WhatCubes/WebOPNotepad",
+                            TextContent = "Source Code"
+                        }
+                    }
+                },
                 editArea,
                 saveBtn,
                 saveFile,
