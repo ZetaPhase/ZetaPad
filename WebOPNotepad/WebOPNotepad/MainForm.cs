@@ -256,6 +256,8 @@ namespace WebOPNotepad
         {
             _localStorage.SetItem(saveFile.Text, editArea.Text);
             _localStorage.SetItem("save_state.txt", editArea.Text);
+            saveFile.InternalJQElement.FadeOut();
+            saveOk.InternalJQElement.FadeOut();
         }
         private void OnLoad()
         {
@@ -266,6 +268,8 @@ namespace WebOPNotepad
         private void OnLoadOk()
         {
             editArea.Text = _localStorage.GetItem(loadFile.Text) ?? "";
+            loadFile.InternalJQElement.FadeOut();
+            loadOk.InternalJQElement.FadeOut();
         }
         private void OnRemove()
         {
@@ -276,6 +280,8 @@ namespace WebOPNotepad
         private void OnRemoveOk()
         {
             _localStorage.RemoveItem(removeFile.Text);
+            removeFile.InternalJQElement.FadeOut();
+            removeOk.InternalJQElement.FadeOut();
         }
     }
 }
