@@ -12,7 +12,9 @@ namespace WebOPNotepad
         private LocalStorageHandle _localStorage;
         private Button color;
         private Button colorOk;
-        private TextBox colorPicker;
+        private TextBox red;
+        private TextBox green;
+        private TextBox blue;
         private TextArea editArea;
         private Button loadBtn;
         private TextBox loadFile;
@@ -25,6 +27,7 @@ namespace WebOPNotepad
         {
             _localStorage = new LocalStorageHandle();
             clear = new Button
+            #region code
             {
                 Text = "Clear All Files",
                 FontStyle = new FontStyle()
@@ -33,6 +36,7 @@ namespace WebOPNotepad
                 },
                 Command = new DelegateCommand(()=>OnClear())
             };
+            #endregion
             remove = new Button
             {
                 Text = "Remove",
@@ -81,12 +85,21 @@ namespace WebOPNotepad
             {
                 Text = "Enter an existing file.",
             };
-            colorPicker = new TextBox
+            red = new TextBox
             {
-                Text = "Enter an RGB value",
-                Width = 100,
+                Text = "R",
             };
-            colorPicker.InternalJQElement.Css("width", "400px");
+            red.InternalJQElement.Css("width", "50px");
+            green = new TextBox
+            {
+                Text = "G"
+            };
+            green.InternalJQElement.Css("width", "50px");
+            blue = new TextBox
+            {
+                Text = "B"
+            };
+            blue.InternalJQElement.Css("width", "50px");
             colorOk = new Button
             {
                 Text = "OK",
@@ -125,7 +138,9 @@ namespace WebOPNotepad
                 remove,
                 removeFile,
                 color,
-                colorPicker,
+                red,
+                green,
+                blue,
                 colorOk,
                 clear,
                 new TextBlock()
@@ -161,7 +176,9 @@ namespace WebOPNotepad
             
             editArea.Text = _localStorage.GetItem("save_state.txt") ?? "";
             //THIS below
-            colorPicker.InternalJQElement.Css("display", "none"); //hide it
+            red.InternalJQElement.Css("display", "none"); //hide it
+            green.InternalJQElement.Css("display", "none");
+            blue.InternalJQElement.Css("display", "none");
             colorOk.InternalJQElement.Css("display", "none");
             //saveFile.InternalJQElement.Css("display", "none");
             //loadFile.InternalJQElement.Css("display", "none");
@@ -172,15 +189,15 @@ namespace WebOPNotepad
         {
             //Color click event
             //editArea.Text = "You have clicked the color button";
-            JSConsole.Log("OnColor Event fired");
-            colorPicker.InternalJQElement.FadeIn();
+            red.InternalJQElement.FadeIn();
+            green.InternalJQElement.FadeIn();
+            blue.InternalJQElement.FadeIn();
             colorOk.InternalJQElement.FadeIn();
         }
 
-        private Int32 OnColorOk()
+        private void OnColorOk()
         {
-            return (Int32.Parse(colorPicker.Text));
-            //editArea.InternalJQElement.Css("color", String.Format("rgb({0}, {1}, {2})", vals.GetValue(0).ToString(), vals.GetValue(1).ToString(), vals.GetValue(2).ToString()));
+            editArea.InternalJQElement.Css("color", String.Format("rgb({0}, {1}, {2})", red.Text, green.Text, blue.Text));
         }
 
         private void OnLoad()
