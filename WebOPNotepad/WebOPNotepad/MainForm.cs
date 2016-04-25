@@ -1,8 +1,12 @@
 ﻿using ExaPhaser.WebForms;
 using ExaPhaser.WebForms.Controls;
 using SharpJS.Dom;
+using System;
 using SharpJS.Dom.Styles;
 using System.IO.WebStorage;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace WebOPNotepad
 {
@@ -17,9 +21,38 @@ namespace WebOPNotepad
         private TextBox loadFile;
         private Button saveBtn;
         private TextBox saveFile;
+        private TextBox removeFile;
+        private Button clear;
+        private Button remove;
         public MainForm()
         {
             _localStorage = new LocalStorageHandle();
+            clear = new Button
+            {
+                Text = "Clear All Files",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12
+                },
+                Command = new DelegateCommand(()=>OnClear())
+            };
+            remove = new Button
+            {
+                Text = "Remove",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12
+                },
+                Command = new DelegateCommand(()=>OnRemove())
+            };
+            removeFile = new TextBox
+            {
+                Text = "",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12
+                },
+            };
             editArea = new TextArea()
             {
                 Text = "",
@@ -54,6 +87,7 @@ namespace WebOPNotepad
             colorPicker = new TextBox
             {
                 Text = "Enter an RGB value",
+                Width = 1,
             };
             colorOk = new Button
             {
@@ -90,9 +124,12 @@ namespace WebOPNotepad
                 saveFile,
                 loadBtn,
                 loadFile,
+                remove,
+                removeFile,
                 color,
                 colorPicker,
                 colorOk,
+                clear,
                 new TextBlock()
                 {
                     Text = "(c) 2016 The WhatCubes Team",
@@ -128,6 +165,9 @@ namespace WebOPNotepad
             //THIS below
             colorPicker.InternalJQElement.Css("display", "none"); //hide it
             colorOk.InternalJQElement.Css("display", "none");
+            //saveFile.InternalJQElement.Css("display", "none");
+            //loadFile.InternalJQElement.Css("display", "none");
+            //removeFile.InternalJQElement.Css("display", "none");
         }
 
         private void OnColor()
@@ -139,16 +179,27 @@ namespace WebOPNotepad
             colorOk.InternalJQElement.FadeIn();
         }
 
-        private void OnColorOk()
+        private Int32 OnColorOk()
         {
-            editArea.InternalJQElement.Css("color", "rgb(0, 255, 255)");
-            //color.InternalJQElement.Css(color="blue");
+            return (Int32.Parse(colorPicker.Text));
+            //editArea.InternalJQElement.Css("color", String.Format("rgb({0}, {1}, {2})", vals.GetValue(0).ToString(), vals.GetValue(1).ToString(), vals.GetValue(2).ToString()));
         }
 
         private void OnLoad()
         {
             //Load event
             editArea.Text = _localStorage.GetItem(loadFile.Text) ?? "";
+        }
+
+        private void OnClear()
+        {
+            //Clear browser storage event
+            _localStorage.Clear();
+        }
+
+        private void OnRemove()
+        {
+            _localStorage.RemoveItem(removeFile.Text);
         }
 
         private void OnSave()
