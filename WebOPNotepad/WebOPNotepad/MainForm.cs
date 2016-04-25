@@ -169,7 +169,7 @@ namespace WebOPNotepad
                 loadOk,
                 remove,
                 removeFile,
-                removeOk
+                removeOk,
                 color,
                 red,
                 green,
