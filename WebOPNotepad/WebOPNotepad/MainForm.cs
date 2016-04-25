@@ -1,26 +1,22 @@
 ﻿using ExaPhaser.WebForms;
 using ExaPhaser.WebForms.Controls;
 using SharpJS.Dom;
-using SharpJS.Dom.Elements;
 using SharpJS.Dom.Styles;
 using System.IO.WebStorage;
-using System;
 
 namespace WebOPNotepad
 {
-	public class MainForm : WebForm
+    public class MainForm : WebForm
     {
-        Button saveBtn;
-        Button loadBtn;
-        Button color;
-        Button colorOk;
-        TextBox colorPicker;
-        TextBox saveFile;
-        TextBox loadFile;
-        TextArea editArea;
-        LocalStorageHandle _localStorage;
-        
-
+        private LocalStorageHandle _localStorage;
+        private Button color;
+        private Button colorOk;
+        private TextBox colorPicker;
+        private TextArea editArea;
+        private Button loadBtn;
+        private TextBox loadFile;
+        private Button saveBtn;
+        private TextBox saveFile;
         public MainForm()
         {
             _localStorage = new LocalStorageHandle();
@@ -51,15 +47,15 @@ namespace WebOPNotepad
             {
                 Text = "Enter a name.",
             };
-            loadFile = new TextBox()
+            loadFile = new TextBox
             {
                 Text = "Enter an existing file.",
             };
-            colorPicker = new TextBox()
+            colorPicker = new TextBox
             {
                 Text = "Enter an RGB value",
             };
-            colorOk = new Button()
+            colorOk = new Button
             {
                 Text = "OK",
                 FontStyle = new FontStyle()
@@ -95,12 +91,16 @@ namespace WebOPNotepad
                 loadBtn,
                 loadFile,
                 color,
+                colorPicker,
+                colorOk,
                 new TextBlock()
                 {
                     Text = "(c) 2016 The WhatCubes Team",
                     TextAlign = TextAlign.Center
                 },
+
                 #region random htmlcontrol
+
                 new HtmlControl()
                 {
                     //Elements = new ElementGroup()
@@ -117,13 +117,38 @@ namespace WebOPNotepad
                     //    },
                     //    new Element("video")
                     //    {
-
                     //    }
                     //}
                 },
-                #endregion
+
+                #endregion random htmlcontrol
             };
+            
             editArea.Text = _localStorage.GetItem("save_state.txt") ?? "";
+            //THIS below
+            colorPicker.InternalJQElement.Css("display", "none"); //hide it
+            colorOk.InternalJQElement.Css("display", "none");
+        }
+
+        private void OnColor()
+        {
+            //Color click event
+            //editArea.Text = "You have clicked the color button";
+            JSConsole.Log("OnColor Event fired");
+            colorPicker.InternalJQElement.FadeIn();
+            colorOk.InternalJQElement.FadeIn();
+        }
+
+        private void OnColorOk()
+        {
+            editArea.InternalJQElement.Css("color", "rgb(0, 255, 255)");
+            //color.InternalJQElement.Css(color="blue");
+        }
+
+        private void OnLoad()
+        {
+            //Load event
+            editArea.Text = _localStorage.GetItem(loadFile.Text) ?? "";
         }
 
         private void OnSave()
@@ -131,21 +156,6 @@ namespace WebOPNotepad
             //Save event
             _localStorage.SetItem(saveFile.Text, editArea.Text);
             _localStorage.SetItem("save_state.txt", editArea.Text);
-        }
-        private void OnLoad()
-        {
-            //Load event
-            editArea.Text = _localStorage.GetItem(loadFile.Text) ?? "";
-        }
-        private void OnColorOk() {
-            //color.InternalJQElement.Css(color="blue");
-        }
-        private void OnColor()
-        {
-            //Color click event
-            editArea.Text = "You have clicked the color button";
-            colorPicker.InternalJQElement.FadeIn();
-            colorOk.InternalJQElement.FadeIn();
         }
     }
 }
