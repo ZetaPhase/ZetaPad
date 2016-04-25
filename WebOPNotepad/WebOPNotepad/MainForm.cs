@@ -3,10 +3,7 @@ using ExaPhaser.WebForms.Controls;
 using SharpJS.Dom;
 using System;
 using SharpJS.Dom.Styles;
-using System.IO.WebStorage;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
+using SharpJS.System.IO.WebStorage;
 
 namespace WebOPNotepad
 {
@@ -87,8 +84,9 @@ namespace WebOPNotepad
             colorPicker = new TextBox
             {
                 Text = "Enter an RGB value",
-                Width = 1,
+                Width = 100,
             };
+            colorPicker.InternalJQElement.Css("width", "400px");
             colorOk = new Button
             {
                 Text = "OK",
