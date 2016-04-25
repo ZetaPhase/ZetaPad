@@ -23,9 +23,39 @@ namespace WebOPNotepad
         private TextBox removeFile;
         private Button clear;
         private Button remove;
+        private Button saveOk;
+        private Button loadOk;
+        private Button removeOk;
         public MainForm()
         {
             _localStorage = new LocalStorageHandle();
+            saveOk = new Button
+            {
+                Text = "OK",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12
+                },
+                Command = new DelegateCommand(() => OnSaveOk())
+            };
+            loadOk = new Button
+            {
+                Text = "OK",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12
+                },
+                Command = new DelegateCommand(() => OnLoadOk())
+            };
+            removeOk = new Button
+            {
+                Text = "OK",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12
+                },
+                Command = new DelegateCommand(() => OnRemoveOk())
+            };
             clear = new Button
             #region code
             {
@@ -133,10 +163,13 @@ namespace WebOPNotepad
                 editArea,
                 saveBtn,
                 saveFile,
+                saveOk,
                 loadBtn,
                 loadFile,
+                loadOk,
                 remove,
                 removeFile,
+                removeOk
                 color,
                 red,
                 green,
@@ -180,9 +213,12 @@ namespace WebOPNotepad
             green.InternalJQElement.Css("display", "none");
             blue.InternalJQElement.Css("display", "none");
             colorOk.InternalJQElement.Css("display", "none");
-            //saveFile.InternalJQElement.Css("display", "none");
-            //loadFile.InternalJQElement.Css("display", "none");
-            //removeFile.InternalJQElement.Css("display", "none");
+            saveFile.InternalJQElement.Css("display", "none");
+            loadFile.InternalJQElement.Css("display", "none");
+            removeFile.InternalJQElement.Css("display", "none");
+            saveOk.InternalJQElement.Css("display", "none");
+            loadOk.InternalJQElement.Css("display", "none");
+            removeOk.InternalJQElement.Css("display", "none");
         }
 
         private void OnColor()
@@ -198,12 +234,10 @@ namespace WebOPNotepad
         private void OnColorOk()
         {
             editArea.InternalJQElement.Css("color", String.Format("rgb({0}, {1}, {2})", red.Text, green.Text, blue.Text));
-        }
-
-        private void OnLoad()
-        {
-            //Load event
-            editArea.Text = _localStorage.GetItem(loadFile.Text) ?? "";
+            red.InternalJQElement.FadeOut();
+            green.InternalJQElement.FadeOut();
+            blue.InternalJQElement.FadeOut();
+            colorOk.InternalJQElement.FadeOut();
         }
 
         private void OnClear()
@@ -212,16 +246,36 @@ namespace WebOPNotepad
             _localStorage.Clear();
         }
 
-        private void OnRemove()
-        {
-            _localStorage.RemoveItem(removeFile.Text);
-        }
-
         private void OnSave()
         {
             //Save event
+            saveFile.InternalJQElement.FadeIn();
+            saveOk.InternalJQElement.FadeIn();
+        }
+        private void OnSaveOk()
+        {
             _localStorage.SetItem(saveFile.Text, editArea.Text);
             _localStorage.SetItem("save_state.txt", editArea.Text);
+        }
+        private void OnLoad()
+        {
+            //Load event
+            loadFile.InternalJQElement.FadeIn();
+            loadOk.InternalJQElement.FadeIn();
+        }
+        private void OnLoadOk()
+        {
+            editArea.Text = _localStorage.GetItem(loadFile.Text) ?? "";
+        }
+        private void OnRemove()
+        {
+            //remove event
+            removeFile.InternalJQElement.FadeIn();
+            removeOk.InternalJQElement.FadeIn();
+        }
+        private void OnRemoveOk()
+        {
+            _localStorage.RemoveItem(removeFile.Text);
         }
     }
 }
