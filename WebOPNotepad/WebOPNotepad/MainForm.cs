@@ -73,7 +73,7 @@ namespace ZetaPad
                 {
                     FontSize = 12,
                 },
-                Columns = 7,
+                Columns = 2,
             };
             saveOk = new Button
             {
@@ -113,7 +113,6 @@ namespace ZetaPad
                 Command = new DelegateCommand(OnClear)
             };
             #endregion
-            clear.InternalJQElement.Css("width", "175px");
             remove = new Button
             {
                 Text = "Remove",
@@ -228,7 +227,7 @@ namespace ZetaPad
                 clear,
                 storedFilesLabel,
                 storedFiles,
-                refreshStoredFiles,
+                refreshStoredFiles, 
                 downloadFileBtn,
                 uploadFileBtn,
                 new TextBlock()
