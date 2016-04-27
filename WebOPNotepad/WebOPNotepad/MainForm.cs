@@ -18,6 +18,7 @@ namespace ZetaPad
         private TextArea editArea;
         private TextArea storedFiles;
         private Button refreshStoredFiles;
+        private TextBox storedFilesLabel;
         private Button loadBtn;
         private TextBox loadFile;
         private Button saveBtn;
@@ -31,6 +32,10 @@ namespace ZetaPad
         public MainForm()
         {
             _localStorage = new LocalStorageHandle();
+            storedFilesLabel = new TextBox
+            {
+                Text = "Saved Files"
+            };
             refreshStoredFiles = new Button
             {
                 Text = "Refresh",
@@ -47,6 +52,7 @@ namespace ZetaPad
                 {
                     FontSize = 12,
                 },
+                Columns = 7,
             };
             saveOk = new Button
             {
@@ -167,6 +173,7 @@ namespace ZetaPad
                 },
                 Command = new DelegateCommand(() => OnColor()),
             };
+            clear.InternalJQElement.Append("<br>");
             Controls = new Layout()
             {
                 new TextBlock()
@@ -195,6 +202,7 @@ namespace ZetaPad
                 blue,
                 colorOk,
                 clear,
+                storedFilesLabel,
                 storedFiles,
                 refreshStoredFiles,
                 new TextBlock()
@@ -254,7 +262,10 @@ namespace ZetaPad
         private void ModifyStoredFiles() {
             for (var i = 0; i < _localStorage.Length; i+=1)
             {
-                storedFiles.Text += _localStorage.Key(i) + '\n';
+                if (storedFiles.Text != "save_state.txt")
+                {
+                    storedFiles.Text += _localStorage.Key(i) + '\n';
+                }
             }
         }
         private void OnColorOk()

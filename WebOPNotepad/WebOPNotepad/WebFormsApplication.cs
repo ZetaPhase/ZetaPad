@@ -1,7 +1,7 @@
 ﻿using ExaPhaser.WebForms;
 using ExaPhaser.WebForms.Themes;
 
-namespace WebOPNotepad
+namespace ZetaPad
 {
     public class WebFormsApplication
     {
