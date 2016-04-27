@@ -144,17 +144,17 @@ namespace ZetaPad
             };
             red = new TextBox
             {
-                Text = "R",
+                PlaceholderText = "R",
             };
             red.InternalJQElement.Css("width", "50px");
             green = new TextBox
             {
-                Text = "G"
+                PlaceholderText = "G"
             };
             green.InternalJQElement.Css("width", "50px");
             blue = new TextBox
             {
-                Text = "B"
+                PlaceholderText = "B"
             };
             blue.InternalJQElement.Css("width", "50px");
             colorOk = new Button
