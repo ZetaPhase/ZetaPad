@@ -1,9 +1,10 @@
-﻿using ExaPhaser.WebForms;
+﻿using System;
+using ExaPhaser.WebForms;
 using ExaPhaser.WebForms.Controls;
 using SharpJS.Dom;
-using System;
 using SharpJS.Dom.Styles;
 using SharpJS.System.IO.WebStorage;
+using SharpJS.JSLibraries;
 
 namespace ZetaPad
 {
@@ -29,10 +30,29 @@ namespace ZetaPad
         private Button saveOk;
         private Button loadOk;
         private Button removeOk;
+		private FileUploadButton uploader;
+		private Button uploadFileBtn;
+		private Button downloadFileBtn;
         
         public MainForm()
         {
             _localStorage = new LocalStorageHandle();
+            uploader = new FileUploadButton
+            {
+				Command = new ParameterizedCommand(OnFileUploaded),
+				UploadType = FileUploadType.TextFile,
+				Visible = false,
+			};
+            uploadFileBtn = new Button
+            {
+				Text = "Upload from Computer",
+				Command = new DelegateCommand(UploadIt),
+			};
+            downloadFileBtn = new Button
+            {
+				Text = "Download to Computer",
+				Command = new DelegateCommand(DownloadIt),
+			};
             storedFilesLabel = new TextBox
             {
                 PlaceholderText = "Saved Files"
@@ -136,11 +156,11 @@ namespace ZetaPad
             };
             saveFile = new TextBox()
             {
-                Text = "Enter a name.",
+                PlaceholderText = "File name.",
             };
             loadFile = new TextBox
             {
-                Text = "Enter an existing file.",
+                PlaceholderText = "Existing file name.",
             };
             red = new TextBox
             {
@@ -209,6 +229,8 @@ namespace ZetaPad
                 storedFilesLabel,
                 storedFiles,
                 refreshStoredFiles,
+                downloadFileBtn,
+                uploadFileBtn,
                 new TextBlock()
                 {
                     Text = "(c) 2016 The WhatCubes Team",
@@ -323,6 +345,20 @@ namespace ZetaPad
             _localStorage.RemoveItem(removeFile.Text);
             removeFile.InternalJQElement.FadeOut();
             removeOk.InternalJQElement.FadeOut();
+        }
+        private void UploadIt()
+        {
+			uploader.SimulateClick();
+        }
+        
+        private void OnFileUploaded(ICommandParameter parameter)
+        {
+        	var args = parameter.Parameter as FileUploadEventArgs;
+			editArea.Text = args.PlainTextContent;
+        }
+        private void DownloadIt()
+        {
+        	FileDownloader.SaveTextToFile(string.IsNullOrWhiteSpace(editArea.Text) ? "myfile.txt" : editArea.Text, saveFile.Text);
         }
     }
 }
