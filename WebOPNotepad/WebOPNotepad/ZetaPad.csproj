@@ -49,9 +49,6 @@
     <Content Include="html\kubism.min.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="html\LICENSE.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="html\polyui.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -227,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="html\FileSaver.min.js" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
