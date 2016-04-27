@@ -1,4 +1,4 @@
-![Logo](webopnotepad.png)
+![Logo](zetapad.png)
 
 Web version notepad of OPNotepad4 using the SharpJS Framework.
  - Save
