@@ -92,6 +92,7 @@ namespace ZetaPad
                 Command = new DelegateCommand(()=>OnClear())
             };
             #endregion
+            clear.InternalJQElement.Css("width", "175px");
             remove = new Button
             {
                 Text = "Remove",
@@ -173,7 +174,9 @@ namespace ZetaPad
                 },
                 Command = new DelegateCommand(() => OnColor()),
             };
-            clear.InternalJQElement.Append("<br>");
+            storedFilesLabel.InternalJQElement.Css("content", @"\a"); //the @ means automaticaly escape backslashes
+            storedFilesLabel.InternalJQElement.Css("white-space", "pre");
+            storedFilesLabel.InternalJQElement.Css("display", "block");
             Controls = new Layout()
             {
                 new TextBlock()
