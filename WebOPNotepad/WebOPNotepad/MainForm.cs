@@ -5,7 +5,7 @@ using System;
 using SharpJS.Dom.Styles;
 using SharpJS.System.IO.WebStorage;
 
-namespace WebOPNotepad
+namespace ZetaPad
 {
     public class MainForm : WebForm
     {
