@@ -181,7 +181,7 @@ namespace ZetaPad
             {
                 new TextBlock()
                 {
-                    Text = "WebOPNotepad",
+                    Text = "ZetaPad",
                     TextAlign = TextAlign.Center,
                     FontStyle = new FontStyle()
                     {
