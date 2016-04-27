@@ -17,6 +17,7 @@ namespace WebOPNotepad
         private TextBox blue;
         private TextArea editArea;
         private TextArea storedFiles;
+        private Button refreshStoredFiles;
         private Button loadBtn;
         private TextBox loadFile;
         private Button saveBtn;
@@ -30,6 +31,15 @@ namespace WebOPNotepad
         public MainForm()
         {
             _localStorage = new LocalStorageHandle();
+            refreshStoredFiles = new Button
+            {
+                Text = "Refresh",
+                FontStyle = new FontStyle()
+                {
+                    FontSize = 12,
+                },
+                Command = new DelegateCommand(() => ModifyStoredFiles()),
+            };
             storedFiles = new TextArea
             {
                 Text = "",
@@ -186,6 +196,7 @@ namespace WebOPNotepad
                 colorOk,
                 clear,
                 storedFiles,
+                refreshStoredFiles,
                 new TextBlock()
                 {
                     Text = "(c) 2016 The WhatCubes Team",
@@ -241,8 +252,10 @@ namespace WebOPNotepad
             colorOk.InternalJQElement.FadeIn();
         }
         private void ModifyStoredFiles() {
-            _localStorage.length()
-            for (var i=0, len)
+            for (var i = 0; i < _localStorage.Length; i+=1)
+            {
+                storedFiles.Text += _localStorage.Key(i) + '\n';
+            }
         }
         private void OnColorOk()
         {
