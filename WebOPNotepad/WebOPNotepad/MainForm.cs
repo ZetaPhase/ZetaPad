@@ -44,7 +44,7 @@ namespace ZetaPad
                 {
                     FontSize = 12,
                 },
-                Command = new DelegateCommand(() => ModifyStoredFiles()),
+                Command = new DelegateCommand(ModifyStoredFiles),
             };
             storedFiles = new TextArea
             {
@@ -71,7 +71,7 @@ namespace ZetaPad
                 {
                     FontSize = 12
                 },
-                Command = new DelegateCommand(() => OnLoadOk())
+                Command = new DelegateCommand(OnLoadOk)
             };
             removeOk = new Button
             {
@@ -80,7 +80,7 @@ namespace ZetaPad
                 {
                     FontSize = 12
                 },
-                Command = new DelegateCommand(() => OnRemoveOk())
+                Command = new DelegateCommand(OnRemoveOk)
             };
             clear = new Button
             #region code
@@ -90,7 +90,7 @@ namespace ZetaPad
                 {
                     FontSize = 12
                 },
-                Command = new DelegateCommand(()=>OnClear())
+                Command = new DelegateCommand(OnClear)
             };
             #endregion
             clear.InternalJQElement.Css("width", "175px");
@@ -101,7 +101,7 @@ namespace ZetaPad
                 {
                     FontSize = 12
                 },
-                Command = new DelegateCommand(()=>OnRemove())
+                Command = new DelegateCommand(OnRemove)
             };
             removeFile = new TextBox
             {
@@ -123,7 +123,7 @@ namespace ZetaPad
                 {
                     FontSize = 12,
                 },
-                Command = new DelegateCommand(() => OnSave()),
+                Command = new DelegateCommand(OnSave),
             };
             loadBtn = new Button()
             {
@@ -132,7 +132,7 @@ namespace ZetaPad
                 {
                     FontSize = 12,
                 },
-                Command = new DelegateCommand(() => OnLoad()),
+                Command = new DelegateCommand(OnLoad),
             };
             saveFile = new TextBox()
             {
@@ -164,7 +164,7 @@ namespace ZetaPad
                 {
                     FontSize = 12,
                 },
-                Command = new DelegateCommand(() => OnColorOk())
+                Command = new DelegateCommand(OnColorOk)
             };
             color = new Button()
             {
@@ -173,7 +173,7 @@ namespace ZetaPad
                 {
                     FontSize = 12,
                 },
-                Command = new DelegateCommand(() => OnColor()),
+                Command = new DelegateCommand(OnColor),
             };
             storedFilesLabel.InternalJQElement.Css("content", @"\a"); //the @ means automaticaly escape backslashes
             storedFilesLabel.InternalJQElement.Css("white-space", "pre");
