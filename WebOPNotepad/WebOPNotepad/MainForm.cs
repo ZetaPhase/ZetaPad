@@ -29,12 +29,13 @@ namespace ZetaPad
         private Button saveOk;
         private Button loadOk;
         private Button removeOk;
+        
         public MainForm()
         {
             _localStorage = new LocalStorageHandle();
             storedFilesLabel = new TextBox
             {
-                Text = "Saved Files"
+                PlaceholderText = "Saved Files"
             };
             refreshStoredFiles = new Button
             {
