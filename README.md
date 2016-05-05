@@ -11,4 +11,4 @@ For web version of the notepad please visit this site: http://whatcubes.github.i
 Please check out the SharpJS @ Exaphaser : https://github.com/exaphaser/SharpJS
 
 
-(c) 2016 The WhatCubes Team, All Rights Reserved.
+(c) 2016 ZetaOhase Technologies Inc, All Rights Reserved.
