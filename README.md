@@ -6,7 +6,7 @@ Web version notepad of OPNotepad4 using the SharpJS Framework.
  - Print
  - and more
 
-For web version of the notepad please visit this site: http://whatcubes.github.io/WebOPNotepad/html/
+For web version of the notepad please visit this site: http://zetaphase.github.io/ZetaPad/html/
 
 Please check out the SharpJS @ Exaphaser : https://github.com/exaphaser/SharpJS
 
