@@ -1,6 +1,6 @@
 ![Logo](zetapad.png)
 
-Web version notepad of OPNotepad4 using the SharpJS Framework.
+Web version notepad of OPNotepad4 using the SharpJS Framework create by [xeliot](https://github.com/xeliot) and [0xFireball](https://github.com/0xFireball).
  - Save
  - Load
  - Print
@@ -11,4 +11,4 @@ For web version of the notepad please visit this site: http://zetaphase.github.i
 Please check out the SharpJS @ Exaphaser : https://github.com/exaphaser/SharpJS
 
 
-(c) 2016 ZetaOhase Technologies Inc, All Rights Reserved.
+(c) 2016 ZetaPhase Technologies Inc, All Rights Reserved.
